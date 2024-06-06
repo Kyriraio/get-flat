@@ -25,6 +25,7 @@ async def start_polling():
                         flats = getNewFlats()
                         for flat in flats:
                             await bot.send_message(user_id, flat)
+                            print(flat)
                         #if(len(flats) == 0):
                         #    await bot.send_message(user_id, 'ыыыыыыыыы!!!')
 

@@ -13,7 +13,7 @@ url = 'https://domovita.by/minsk/flats/rent?rooms=2%2C3%2C%3E3&price%5Bmin%5D=20
 
 database = 'flats.db'
 
-async def fetch_html_selenium(url):
+def fetch_html_selenium(url):
     # Настройка Chrome опций
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # Запуск в фоновом режиме
@@ -52,7 +52,7 @@ async def fetch_html(url):
         print(f"Error fetching ads: {e}")
         return []
 
-async def parse_html(html):
+def parse_html(html):
     soup = BeautifulSoup(html, 'html.parser')
     flats = set()
 
@@ -80,9 +80,9 @@ def create_table():
     conn.commit()
     conn.close()
 
-async def fetch_ads():
-    html = await fetch_html_selenium(url)
-    return await parse_html(html)
+def fetch_ads():
+    html = fetch_html_selenium(url)
+    return parse_html(html)
 
 def filter_new_ads(links):
     conn = sqlite3.connect(database)
@@ -105,8 +105,8 @@ def add_ads_to_db(links):
     conn.commit()
     conn.close()
 
-async def get_new_flats():
-    links = await fetch_ads()
+def get_new_flats():
+    links = fetch_ads()
     new_links = []
     if links:
             new_links = filter_new_ads(links)
@@ -117,7 +117,7 @@ async def get_new_flats():
 async def main():
     create_table()
     while True:
-        links = await fetch_ads()
+        links = fetch_ads()
         print ('got links')
 
         if links:
