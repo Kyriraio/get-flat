@@ -28,7 +28,7 @@ async def start_polling():
                         #if(len(flats) == 0):
                         #    await bot.send_message(user_id, 'ыыыыыыыыы!!!')
 
-            await asyncio.sleep(10)
+            await asyncio.sleep(10 * 60)
 
     #543510374
     # Start polling
