@@ -21,8 +21,9 @@ async def start_polling():
         while True:
             async with asyncio.Lock():
                 if users:  # Проверяем, что есть пользователи для отправки
+                    flats = getNewFlats()
+                    print(f"{len(flats)} flats")
                     for user_id in users.copy():  # Делаем копию множества пользователей
-                        flats = getNewFlats()
                         for flat in flats:
                             await bot.send_message(user_id, flat)
                             print(flat)
