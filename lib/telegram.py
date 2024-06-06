@@ -19,11 +19,14 @@ async def start_polling():
         users.add(user_id)
 
         while True:
-            if users:  # Проверяем, что есть пользователи для отправки
-                for user_id in users:
-                    # Отправляем сообщения каждому пользователю
-                    for flat in getNewFlats():
-                        await bot.send_message(user_id, flat)
+            async with asyncio.Lock():
+                if users:  # Проверяем, что есть пользователи для отправки
+                    for user_id in users.copy():  # Делаем копию множества пользователей
+                        flats = getNewFlats()
+                        for flat in flats:
+                            await bot.send_message(user_id, flat)
+                        #if(len(flats) == 0):
+                        #    await bot.send_message(user_id, 'ыыыыыыыыы!!!')
 
             await asyncio.sleep(10)
 
