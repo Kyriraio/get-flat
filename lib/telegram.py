@@ -1,4 +1,5 @@
 import asyncio
+import datetime
 
 import logging
 import time
@@ -18,15 +19,16 @@ async def start_polling():
         print (user_id)
         users.add(user_id)
 
+        current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         while True:
             async with asyncio.Lock():
                 if users:  # Проверяем, что есть пользователи для отправки
                     flats = getNewFlats()
-                    print(f"{len(flats)} flats")
+                    print(f"{current_time} - {len(flats)} flats")
                     for user_id in users.copy():  # Делаем копию множества пользователей
                         for flat in flats:
                             await bot.send_message(user_id, flat)
-                            print(flat)
+                            print(f"{current_time} - {flat}")
                         #if(len(flats) == 0):
                         #    await bot.send_message(user_id, 'ыыыыыыыыы!!!')
 
