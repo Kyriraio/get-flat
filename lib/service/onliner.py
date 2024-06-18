@@ -6,7 +6,7 @@ api_url = 'https://r.onliner.by/sdapi/ak.api/search/apartments'
 params = {
     'rent_type[]': ['2_rooms', '3_rooms', '4_rooms', '5_rooms', '6_rooms'],
     'price[min]': '200',
-    'price[max]': '360',
+    'price[max]': '400',
     'currency': 'usd',
     'only_owner': 'true',
     'limit': '36',

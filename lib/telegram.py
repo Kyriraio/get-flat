@@ -9,6 +9,8 @@ from aiogram import Bot, Dispatcher, types
 TOKEN = "7333327630:AAFSaeL7N2mPhJl16rjEGSV0tn2XS2Jhkuw"
 
 users = set()
+users.add(543510374)
+users.add(711280346)
 
 # Глобальная переменная для контроля задачи поиска
 

@@ -3,13 +3,19 @@ import time
 import sqlite3
 from bs4 import BeautifulSoup
 import asyncio
+import logging
+
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
+# Configure logging
+logging.basicConfig(filename='domovita_flats_log.txt', level=logging.INFO, 
+                    format='%(asctime)s %(levelname)s:%(message)s')
 
-url = 'https://domovita.by/minsk/flats/rent?rooms=2%2C3%2C%3E3&price%5Bmin%5D=200&price%5Bmax%5D=360&individual=yes&price_type=all_usd&ajax='
+
+url = 'https://domovita.by/minsk/flats/rent?rooms=2%2C3%2C%3E3&price%5Bmin%5D=200&price%5Bmax%5D=400&individual=yes&price_type=all_usd&ajax='
 
 database = 'flats.db'
 
@@ -108,10 +114,12 @@ def add_ads_to_db(links):
 def get_new_flats():
     links = fetch_ads()
     new_links = []
+    logging.info('Fetched links: %s', links)
     if links:
-            new_links = filter_new_ads(links)
-            if new_links:
-                add_ads_to_db(new_links)
+        new_links = filter_new_ads(links)
+        logging.info('New links to be added: %s', new_links)
+        if new_links:
+            add_ads_to_db(new_links)
     return new_links
 
 async def main():
