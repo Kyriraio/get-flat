@@ -23,7 +23,7 @@ def fetch_html_selenium(url):
     try:
         # Настройка Chrome опций
         chrome_options = Options()
-        chrome_options.add_argument("--headless")  # Запуск в фоновом режиме
+        chrome_options.add_argument("--headless=new")  # Запуск в фоновом режиме
         chrome_options.add_argument("--disable-gpu")
         proxy_ext_path = os.path.join(os.path.dirname(os.path.dirname(__file__)),'proxy_chrome_ext')
 
