@@ -4,7 +4,7 @@ import sqlite3
 from bs4 import BeautifulSoup
 import asyncio
 import logging
-
+import os
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -20,33 +20,41 @@ url = 'https://domovita.by/minsk/flats/rent?rooms=2%2C3%2C%3E3&price%5Bmin%5D=20
 database = 'flats.db'
 
 def fetch_html_selenium(url):
-    # Настройка Chrome опций
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Запуск в фоновом режиме
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument('log-level=3')
+    try:
+        # Настройка Chrome опций
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")  # Запуск в фоновом режиме
+        chrome_options.add_argument("--disable-gpu")
+        proxy_ext_path = os.path.join(os.path.dirname(os.path.dirname(__file__)),'proxy_chrome_ext')
 
-    # Укажите путь к вашему драйверу
-    # service = Service('path/to/chromedriver')
-    
-    # Создание браузерного драйвера
-    driver = webdriver.Chrome(options=chrome_options)
-    
-    # Переход на нужную страницу
-    driver.get(url)
-    
-    # Ожидание завершения выполнения JavaScript
-    time.sleep(5)  # Это время может потребоваться подстроить в зависимости от скорости загрузки страницы
-    
-    # Получение HTML-кода страницы
-    html = driver.page_source
-    
-    # Закрытие браузера
-    driver.quit()
-    
-    return html
+        chrome_options.add_argument(f"--load-extension={proxy_ext_path}")
+
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument('log-level=3')
+
+        # Укажите путь к вашему драйверу
+        # service = Service('path/to/chromedriver')
+        
+        # Создание браузерного драйвера
+        driver = webdriver.Chrome(options=chrome_options)
+        
+        # Переход на нужную страницу
+        driver.get(url)
+        
+        # Ожидание завершения выполнения JavaScript
+        time.sleep(5)  # Это время может потребоваться подстроить в зависимости от скорости загрузки страницы
+        
+        # Получение HTML-кода страницы
+        html = driver.page_source
+        
+        # Закрытие браузера
+        driver.quit()
+        
+        return html
+    except Exception as e:
+        logging.error(f"Selenium error: {e}")
+        return ""
 
 async def fetch_html(url):
     try:
