@@ -9,7 +9,7 @@ params = {
     'cur': 'USD',
     'gtsy': 'country-belarus~province-minsk~locality-minsk',
     'lang': 'ru',
-    'prc': 'r:200,400',
+    'prc': 'r:200,450',
     'rms': 'v.or:2,3,4',
     'rnt': '1',
     'size': '30',

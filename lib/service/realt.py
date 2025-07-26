@@ -44,7 +44,7 @@ def fetch_ads():
                 "data": {
                     "where": {
                         "rooms": ["2"],
-                        "priceTo": "500",
+                        "priceTo": "450",
                         "priceType": "840",
                         "addressV2": [{"townUuid": "4cb07174-7b00-11eb-8943-0cc47adabd66"}],
                         "allSeparate": "true",
