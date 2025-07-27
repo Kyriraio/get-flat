@@ -10,6 +10,7 @@ params = {
     'lang': 'ru',
     'prc': 'r:200,450',
     'rms': 'v.or:2,3,4',
+    'size': '30',
     'typ': 'let'
 }
 flat_link = 'https://re.kufar.by/vi/'
