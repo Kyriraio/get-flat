@@ -8,7 +8,6 @@ params = {
     'price[min]': '200',
     'price[max]': '450',
     'currency': 'usd',
-    'only_owner': 'true',
     'limit': '36',
     'bounds[lb][lat]': '53.64463782485651',
     'bounds[lb][long]': '27.09091186523438',

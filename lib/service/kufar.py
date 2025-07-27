@@ -5,14 +5,11 @@ import sqlite3
 api_url = 'https://api.kufar.by/search-api/v2/search/rendered-paginated'
 params = {
     'cat': '1010',
-    'cmp': '0',
     'cur': 'USD',
     'gtsy': 'country-belarus~province-minsk~locality-minsk',
     'lang': 'ru',
     'prc': 'r:200,450',
     'rms': 'v.or:2,3,4',
-    'rnt': '1',
-    'size': '30',
     'typ': 'let'
 }
 flat_link = 'https://re.kufar.by/vi/'

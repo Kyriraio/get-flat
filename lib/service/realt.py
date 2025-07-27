@@ -41,7 +41,7 @@ def fetch_ads():
         payload = {
             "operationName": "searchObjects",
             "variables": {
-                "data": {
+                "data": {   
                     "where": {
                         "rooms": ["2"],
                         "priceTo": "450",
