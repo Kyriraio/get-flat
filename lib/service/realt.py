@@ -43,8 +43,8 @@ def fetch_ads():
             "variables": {
                 "data": {   
                     "where": {
-                        "rooms": ["2"],
-                        "priceTo": "450",
+                        "rooms": ["3"],
+                        "priceTo": "700",
                         "priceType": "840",
                         "addressV2": [{"townUuid": "4cb07174-7b00-11eb-8943-0cc47adabd66"}],
                         "allSeparate": "true",

@@ -8,8 +8,8 @@ params = {
     'cur': 'USD',
     'gtsy': 'country-belarus~province-minsk~locality-minsk',
     'lang': 'ru',
-    'prc': 'r:200,450',
-    'rms': 'v.or:2,3,4',
+    'prc': 'r:200,700',
+    'rms': 'v.or:3,4',
     'size': '30',
     'typ': 'let'
 }
